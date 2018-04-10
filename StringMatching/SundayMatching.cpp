@@ -8,22 +8,16 @@
 /// \date 2018-04-08
 #include <iostream>
 #include <string>
-#include <vector>
+#include <map>
 using namespace std;
-
-const int maxNum = 127;
 
 int sunday_matching(const string& S,const string& T){
     int n=S.length();                                            //主串 S 的长度
     int m=T.length();
-    int shift[maxNum];
-    // 默认值，移动 m+1 位
-    for(int i=0;i<maxNum;i++){
-        shift[i]=m+1;
-    }
-    // 子串 T 中每个字母出现的最后的下标
+    map<char,int> shift;
+    // 子串 T 中每个字母出现的最后的下标，从 1 由右往左数
     // 所对应的主串参与匹配的最末位字符的下一位字符移动到该位，所需要的移动位数
-    // P[i] 对应的字符的 ASCII 整数值
+    // A3 B2 C5 D1
     for(int i=0;i<m;i++){
         shift[T[i]] = m-i;
     }
