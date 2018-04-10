@@ -1,7 +1,17 @@
+/// \brief KMP 字符串匹配算法
+///
+/// 此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符。
+/// 即部分匹配表，程序中由 get_next 函数获得。时间复杂度最好为 O(m+n)，最坏为 O（(n-m+1)*m)。
+///
+/// \author HSDB
+/// \date 2018-04-08
 #include <iostream>
 #include <string>
 #include <vector>
 using namespace std;
+
+/// 调试时用 *(next._M_impl._M_start)@7 产看 vector 里的值
+/// -1 0 0 0 -1 0 2
 void get_next(const string &p,vector<int> &next){
     next.resize(p.size());
     next[0]=-1;
